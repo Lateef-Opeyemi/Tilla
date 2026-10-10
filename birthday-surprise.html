@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Tilla🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4E7;
+    --cream-deep:#F0E2C8;
+    --burgundy:#5C1225;
+    --burgundy-deep:#360A16;
+    --burgundy-soft:#8C2E45;
+    --rose:#B5566E;
+    --gold:#C9A227;
+    --ink:#2B0A12;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.serif{font-family:'Playfair Display',serif;}
+
+  /* ---------- OPENER ---------- */
+  #opener{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(circle at 50% 30%, var(--burgundy-soft) 0%, var(--burgundy) 55%, var(--burgundy-deep) 100%);
+    overflow:hidden;
+    transition:opacity 1s ease, visibility 1s ease;
+  }
+  #opener.hide{opacity:0;visibility:hidden;pointer-events:none;}
+
+  .opener-vinyl{
+    width:clamp(90px,18vw,150px);
+    height:clamp(90px,18vw,150px);
+    border-radius:50%;
+    background:
+      repeating-radial-gradient(circle, #1a1a1a 0px, #1a1a1a 2px, #2b2b2b 3px, #1a1a1a 4px);
+    position:relative;
+    margin-bottom:2.2rem;
+    animation:spin 6s linear infinite;
+    box-shadow:0 0 40px rgba(0,0,0,.4);
+  }
+  .opener-vinyl::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    margin:auto;
+    width:34%;
+    height:34%;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:inset 0 0 0 4px var(--burgundy-deep);
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .countdown-number{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:clamp(5rem,22vw,10rem);
+    color:var(--cream);
+    line-height:1;
+    display:none;
+    animation:popIn .7s cubic-bezier(.26,1.3,.4,1);
+    text-shadow:0 10px 40px rgba(0,0,0,.35);
+  }
+  .countdown-number.show{display:block;}
+  @keyframes popIn{
+    0%{transform:scale(.3);opacity:0;}
+    60%{transform:scale(1.15);opacity:1;}
+    100%{transform:scale(1);}
+  }
+
+  .birthday-reveal{
+    display:none;
+    text-align:center;
+    padding:0 1.5rem;
+  }
+  .birthday-reveal.show{display:block;animation:popIn .9s cubic-bezier(.26,1.3,.4,1);}
+  .birthday-reveal h1{
+    font-size:clamp(2.2rem,8vw,4.5rem);
+    color:var(--cream);
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  .birthday-reveal p{
+    margin-top:.9rem;
+    color:var(--cream-deep);
+    font-size:clamp(1rem,2.4vw,1.25rem);
+    font-weight:300;
+    letter-spacing:.03em;
+  }
+
+  .enter-btn{
+    margin-top:2.6rem;
+    display:none;
+    padding:.95rem 2.6rem;
+    border-radius:999px;
+    border:1.5px solid var(--gold);
+    background:transparent;
+    color:var(--cream);
+    font-family:'Jost',sans-serif;
+    font-size:1rem;
+    letter-spacing:.04em;
+    cursor:pointer;
+    transition:background .35s ease, color .35s ease, transform .3s ease;
+  }
+  .enter-btn.show{display:inline-block;animation:popIn 1s cubic-bezier(.26,1.3,.4,1);}
+  .enter-btn:hover{background:var(--gold);color:var(--burgundy-deep);transform:translateY(-3px);}
+
+  /* confetti */
+  .confetti-piece{
+    position:absolute;
+    top:-10%;
+    width:9px;
+    height:14px;
+    opacity:.95;
+    pointer-events:none;
+    animation-name:confetti-fall;
+    animation-timing-function:ease-in;
+    animation-fill-mode:forwards;
+  }
+  @keyframes confetti-fall{
+    to{transform:translateY(115vh) rotate(540deg);opacity:0;}
+  }
+
+  /* ---------- MAIN SITE ---------- */
+  #main{display:none;position:relative;}
+  #main.show{display:block;}
+
+  .floating-heart{
+    position:fixed;
+    bottom:-5%;
+    font-size:1.4rem;
+    color:var(--rose);
+    opacity:.55;
+    pointer-events:none;
+    z-index:1;
+    animation-name:heart-rise;
+    animation-timing-function:ease-in;
+  }
+  @keyframes heart-rise{
+    0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0;}
+    10%{opacity:.6;}
+    100%{transform:translateY(-110vh) translateX(var(--drift,20px)) rotate(25deg);opacity:0;}
+  }
+
+  section{
+    position:relative;
+    z-index:2;
+    padding:6.5rem 1.5rem;
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+  .reveal.in-view{animation:revealPop .9s ease;}
+  @keyframes revealPop{
+    0%{opacity:.3;transform:translateY(26px);}
+    100%{opacity:1;transform:translateY(0);}
+  }
+
+  /* HERO */
+  #hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding-top:4rem;
+  }
+  .hero-eyebrow{
+    font-size:clamp(.95rem,2vw,1.1rem);
+    color:var(--burgundy-soft);
+    font-weight:400;
+    margin-bottom:.6rem;
+  }
+  #hero h1{
+    font-size:clamp(2.6rem,9vw,5.2rem);
+    color:var(--burgundy);
+    font-weight:600;
+    line-height:1.05;
+  }
+  #hero h1 em{
+    font-style:italic;
+    color:var(--rose);
+  }
+  #hero .tagline{
+    margin-top:1.3rem;
+    max-width:36ch;
+    font-size:clamp(1rem,2vw,1.2rem);
+    color:#5a3a40;
+    font-weight:300;
+  }
+  .names-pill{
+    margin-top:2.6rem;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:clamp(1.1rem,2.6vw,1.5rem);
+    color:var(--burgundy);
+    border-top:1px solid var(--gold);
+    border-bottom:1px solid var(--gold);
+    padding:.6rem 2rem;
+  }
+  .scroll-cue{
+    position:absolute;
+    bottom:2.4rem;
+    font-size:.85rem;
+    color:var(--burgundy-soft);
+    letter-spacing:.08em;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.4rem;
+  }
+  .scroll-cue::after{
+    content:'';
+    width:1px;
+    height:34px;
+    background:var(--burgundy-soft);
+    animation:scrollLine 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollLine{
+    0%,100%{transform:scaleY(.4);opacity:.4;transform-origin:top;}
+    50%{transform:scaleY(1);opacity:1;transform-origin:top;}
+  }
+
+  /* SECTION HEADS */
+  .section-head{
+    text-align:center;
+    margin-bottom:3.2rem;
+  }
+  .section-head h2{
+    font-size:clamp(2rem,5vw,3rem);
+    color:var(--burgundy);
+    font-weight:600;
+  }
+  .section-head p{
+    margin-top:.6rem;
+    color:#6b4a50;
+    font-weight:300;
+    font-size:1.05rem;
+  }
+
+  /* LETTER */
+  #letter{
+    background:var(--cream-deep);
+    border-radius:4px;
+  }
+  .letter-layout{
+    display:flex;
+    align-items:flex-start;
+    gap:clamp(1.5rem,4vw,3rem);
+  }
+  .letter-card{
+    background:var(--cream);
+    flex:1.35;
+    min-width:0;
+    padding:clamp(2rem,5vw,3.6rem);
+    border-radius:3px;
+    box-shadow:0 30px 60px -20px rgba(54,10,22,.25);
+    position:relative;
+    border-left:3px solid var(--gold);
+  }
+  /* self-resizing memory cluster: works correctly whether it holds 1, 2, or 3 photos —
+     each item is flex:1 so they always divide the available space evenly, no gaps,
+     no broken layout if you delete one. */
+  .letter-photos{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:1.3rem;
+    min-width:0;
+  }
+  .cluster-hint{
+    font-size:.75rem;
+    color:#9a7680;
+    font-weight:300;
+    margin-bottom:.7rem;
+    font-style:italic;
+  }
+  .memory-cluster{
+    display:flex;
+    gap:.9rem;
+    min-width:0;
+  }
+  .memory-cluster .polaroid{
+    flex:1 1 0;
+    min-width:0;
+    width:auto;
+  }
+  .memory-cluster .polaroid:nth-child(odd){transform:rotate(2.5deg);}
+  .memory-cluster .polaroid:nth-child(even){transform:rotate(-2.5deg);}
+  @media (max-width:800px){
+    .letter-layout{flex-direction:column;}
+    .letter-photos{flex-direction:row;width:100%;}
+  }
+  @media (max-width:480px){
+    .memory-cluster{flex-wrap:wrap;}
+    .memory-cluster .polaroid{flex:1 1 45%;}
+  }
+  .letter-mark{
+    font-family:'Playfair Display',serif;
+    font-size:3.5rem;
+    color:var(--gold);
+    line-height:.6;
+    margin-bottom:.6rem;
+    display:block;
+  }
+  .letter-card p{
+    font-size:clamp(1rem,2vw,1.12rem);
+    line-height:1.85;
+    color:#3a1620;
+    margin-bottom:1.1rem;
+    font-weight:300;
+  }
+  .letter-signoff{
+    margin-top:1.8rem;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--burgundy);
+    text-align:right;
+  }
+  .editable{
+    border-bottom:1.5px dashed var(--rose);
+    padding:0 2px;
+    font-weight:500;
+  }
+
+  /* GALLERY */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:2.4rem;
+    margin-top:1rem;
+  }
+  .polaroid{
+    background:#fff;
+    padding:.9rem .9rem 1.4rem;
+    box-shadow:0 20px 35px -15px rgba(54,10,22,.3);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .polaroid:nth-child(odd){transform:rotate(-3deg);}
+  .polaroid:nth-child(even){transform:rotate(2.5deg);}
+  .polaroid:hover{transform:rotate(0deg) translateY(-6px) scale(1.02);box-shadow:0 28px 45px -15px rgba(54,10,22,.4);}
+  .polaroid .frame{
+    aspect-ratio:1/1;
+    background:var(--cream-deep);
+    border:1px dashed var(--rose);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .polaroid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    color:#8a5b63;
+    font-size:.85rem;
+    text-align:center;
+    padding:1rem;
+  }
+  .polaroid figcaption{
+    margin-top:.8rem;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:.95rem;
+    color:#6b4a50;
+    text-align:center;
+  }
+
+  /* MUSIC */
+  #music{text-align:center;}
+  .vinyl-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:2.8rem;
+    margin-top:1.5rem;
+  }
+  .vinyl-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+    width:180px;
+  }
+  .vinyl{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    background:
+      repeating-radial-gradient(circle, #181818 0px, #181818 2px, #2c2c2c 3px, #181818 4px);
+    position:relative;
+    box-shadow:0 18px 30px -10px rgba(54,10,22,.4);
+    animation:spin 7s linear infinite;
+    animation-play-state:paused;
+    transition:transform .3s ease;
+  }
+  .vinyl-card:hover .vinyl{animation-play-state:running;transform:scale(1.05);}
+  .vinyl::after{
+    content:'♪';
+    position:absolute;
+    inset:0;
+    margin:auto;
+    width:46%;
+    height:46%;
+    border-radius:50%;
+    background:var(--burgundy);
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.3rem;
+    box-shadow:inset 0 0 0 3px var(--burgundy-deep);
+  }
+  .vinyl-title{
+    margin-top:1rem;
+    font-weight:500;
+    font-size:.98rem;
+    color:var(--burgundy);
+  }
+  .vinyl-artist{
+    font-size:.82rem;
+    color:#8a5b63;
+    font-weight:300;
+  }
+  .vinyl-hint{
+    margin-top:2.4rem;
+    font-size:.85rem;
+    color:#8a5b63;
+    font-weight:300;
+  }
+
+  /* CLOSER */
+  #closer{
+    text-align:center;
+    padding-bottom:7rem;
+  }
+  #closer h2{
+    font-size:clamp(1.8rem,5vw,2.8rem);
+    color:var(--burgundy);
+  }
+  #closer p{
+    margin-top:1rem;
+    color:#6b4a50;
+    font-weight:300;
+    max-width:40ch;
+    margin-inline:auto;
+  }
+  .heart-divider{
+    margin:2.2rem auto 0;
+    color:var(--rose);
+    font-size:1.4rem;
+  }
+
+  /* ---------- SPARKLES ---------- */
+  .sparkle{
+    position:fixed;
+    pointer-events:none;
+    z-index:1;
+    color:var(--gold);
+    font-size:1rem;
+    opacity:0;
+    animation-name:twinkle;
+    animation-timing-function:ease-in-out;
+  }
+  @keyframes twinkle{
+    0%{opacity:0;transform:scale(.3) rotate(0deg);}
+    50%{opacity:.9;transform:scale(1.1) rotate(90deg);}
+    100%{opacity:0;transform:scale(.3) rotate(180deg);}
+  }
+
+  /* ---------- CURSOR HEART TRAIL ---------- */
+  .trail-heart{
+    position:fixed;
+    z-index:3;
+    pointer-events:none;
+    color:var(--rose);
+    font-size:1rem;
+    animation:trailFade 1.1s ease-out forwards;
+  }
+  @keyframes trailFade{
+    0%{opacity:.9;transform:translateY(0) scale(1);}
+    100%{opacity:0;transform:translateY(-30px) scale(.4);}
+  }
+
+  /* ---------- GLOW PULSE ---------- */
+  .glow-pulse{
+    animation:glowPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes glowPulse{
+    0%,100%{text-shadow:0 0 18px rgba(201,162,39,.35), 0 10px 40px rgba(0,0,0,.35);}
+    50%{text-shadow:0 0 38px rgba(201,162,39,.75), 0 10px 40px rgba(0,0,0,.35);}
+  }
+  .section-head h2{
+    animation:headGlow 3.5s ease-in-out infinite;
+  }
+  @keyframes headGlow{
+    0%,100%{text-shadow:0 0 0 rgba(201,162,39,0);}
+    50%{text-shadow:0 0 22px rgba(201,162,39,.3);}
+  }
+
+  /* ---------- TILT ---------- */
+  .polaroid{transform-style:preserve-3d;perspective:800px;}
+  .polaroid .frame{transition:transform .15s ease;}
+
+  /* ---------- OUR STORY TIMELINE ---------- */
+  #story{background:var(--cream-deep);}
+  .timeline{
+    position:relative;
+    margin-top:1rem;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:linear-gradient(var(--gold), var(--rose), var(--gold));
+    transform:translateX(-50%);
+  }
+  .story-item{
+    display:grid;
+    grid-template-columns:1fr 40px 1fr;
+    align-items:center;
+    gap:1rem;
+    margin-bottom:3.5rem;
+    opacity:1;
+  }
+  .story-item.in-view{animation:storyPop .9s ease;}
+  @keyframes storyPop{
+    0%{opacity:.3;transform:translateY(30px);}
+    100%{opacity:1;transform:translateY(0);}
+  }
+  .story-dot{
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--burgundy);
+    border:3px solid var(--gold);
+    justify-self:center;
+    position:relative;
+    z-index:2;
+    box-shadow:0 0 0 6px var(--cream-deep);
+  }
+  .story-photo{
+    aspect-ratio:4/3;
+    background:var(--cream);
+    border:1px dashed var(--rose);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    box-shadow:0 18px 35px -15px rgba(54,10,22,.3);
+    transform-style:preserve-3d;
+    perspective:800px;
+    transition:transform .15s ease;
+  }
+  .story-photo img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    color:#8a5b63;font-size:.8rem;text-align:center;padding:.8rem;
+  }
+  .story-text{padding:0 .5rem;}
+  .story-text .story-date{
+    font-size:.78rem;
+    color:var(--rose);
+    font-weight:500;
+    letter-spacing:.03em;
+  }
+  .story-text h3{
+    font-size:clamp(1.15rem,2.4vw,1.4rem);
+    color:var(--burgundy);
+    margin:.3rem 0 .5rem;
+    font-weight:600;
+  }
+  .story-text p{
+    font-size:.95rem;
+    color:#5a3a40;
+    font-weight:300;
+    line-height:1.7;
+  }
+  .story-item:nth-child(even) .story-photo{order:3;}
+  .story-item:nth-child(even) .story-dot{order:2;}
+  .story-item:nth-child(even) .story-text{order:1;text-align:right;}
+
+  @media (max-width:720px){
+    .timeline::before{left:18px;}
+    .story-item,
+    .story-item:nth-child(even){
+      grid-template-columns:36px 1fr;
+      grid-template-areas:"dot text" "photo photo";
+    }
+    .story-item .story-dot{grid-area:dot;order:0;box-shadow:0 0 0 5px var(--cream-deep);}
+    .story-item .story-text{grid-area:text;order:0;text-align:left !important;}
+    .story-item .story-photo{grid-area:photo;order:0;margin-top:1rem;}
+  }
+
+  /* ---------- HEART CURSOR ---------- */
+  #main.show{
+    cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"><path fill="%238C2E45" d="M13 23s-9-5.6-9-12.4C4 6.8 6.8 4 10.2 4c1.9 0 3.6 1 4.8 2.6C16.2 5 17.9 4 19.8 4 23.2 4 26 6.8 26 10.6 26 17.4 13 23 13 23z" transform="translate(-4 0) scale(0.95)"/></svg>') 13 13, auto;
+  }
+
+  /* ---------- ENVELOPE ---------- */
+  .envelope-wrap{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+  }
+  .envelope-wrap.show{display:flex;animation:popIn .8s cubic-bezier(.26,1.3,.4,1);}
+  .envelope{
+    width:clamp(150px,35vw,220px);
+    aspect-ratio:3/2;
+    position:relative;
+    margin-bottom:1.6rem;
+  }
+  .envelope-body{
+    position:absolute;
+    inset:0;
+    background:var(--cream);
+    border-radius:4px;
+    box-shadow:0 20px 45px -15px rgba(0,0,0,.5);
+  }
+  .envelope-flap{
+    position:absolute;
+    top:0;left:0;right:0;
+    height:55%;
+    background:var(--cream-deep);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:transform .7s cubic-bezier(.4,.2,.2,1);
+    z-index:3;
+  }
+  .envelope-wrap.open .envelope-flap{transform:rotateX(180deg);}
+  .envelope-heart{
+    position:absolute;
+    top:52%;left:50%;
+    transform:translate(-50%,-50%);
+    color:var(--burgundy);
+    font-size:1.6rem;
+    z-index:2;
+    animation:heartbeat 1.6s ease-in-out infinite;
+  }
+  @keyframes heartbeat{
+    0%,100%{transform:translate(-50%,-50%) scale(1);}
+    50%{transform:translate(-50%,-50%) scale(1.18);}
+  }
+  .envelope-letter{
+    position:absolute;
+    left:8%;right:8%;
+    bottom:6%;
+    height:0%;
+    background:#fff;
+    border-radius:2px;
+    z-index:1;
+    opacity:0;
+    transition:height .6s ease .3s, opacity .4s ease .3s;
+  }
+  .envelope-wrap.open .envelope-letter{height:78%;opacity:1;}
+  .envelope-caption{
+    color:var(--cream-deep);
+    font-size:.95rem;
+    letter-spacing:.03em;
+    font-weight:300;
+  }
+
+  /* ---------- TYPEWRITER ---------- */
+  .typewriter-line{
+    display:inline-block;
+    overflow:hidden;
+    white-space:normal;
+  }
+  .tw-cursor{
+    display:inline-block;
+    width:2px;
+    background:var(--burgundy-soft);
+    animation:caretBlink .8s step-end infinite;
+    margin-left:2px;
+  }
+  @keyframes caretBlink{50%{opacity:0;}}
+
+  /* ---------- MUSIC TOGGLE ---------- */
+  .music-toggle{
+    position:fixed;
+    bottom:1.6rem;
+    right:1.6rem;
+    z-index:20;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:var(--burgundy);
+    border:2px solid var(--gold);
+    color:var(--gold);
+    font-size:1.2rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 10px 25px -8px rgba(54,10,22,.5);
+    transition:transform .3s ease;
+  }
+  .music-toggle:hover{transform:scale(1.08);}
+  .music-toggle.playing .music-disc{animation:spin 3s linear infinite;}
+
+  /* ---------- RUNAWAY BUTTON GAME ---------- */
+  #lovequiz{text-align:center;}
+  .quiz-card{
+    max-width:420px;
+    margin:0 auto;
+    background:var(--cream-deep);
+    border-radius:6px;
+    padding:clamp(2rem,5vw,3rem) 1.5rem;
+    box-shadow:0 25px 50px -20px rgba(54,10,22,.3);
+  }
+  .quiz-card h3{
+    font-size:clamp(1.3rem,3vw,1.7rem);
+    color:var(--burgundy);
+    margin-bottom:1.8rem;
+  }
+  .quiz-buttons{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    gap:1.4rem;
+    min-height:60px;
+  }
+  .quiz-btn{
+    padding:.85rem 2rem;
+    border-radius:999px;
+    border:none;
+    font-family:'Jost',sans-serif;
+    font-size:1rem;
+    cursor:pointer;
+    transition:transform .2s ease;
+  }
+  #quizYes{
+    background:var(--burgundy);
+    color:var(--cream);
+  }
+  #quizYes:hover{transform:scale(1.07);}
+  #quizNo{
+    background:transparent;
+    border:1.5px solid var(--rose);
+    color:var(--rose);
+    position:relative;
+  }
+  .quiz-result{
+    margin-top:1.6rem;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    color:var(--burgundy);
+    font-size:1.15rem;
+    min-height:1.6rem;
+  }
+
+  /* ---------- PARTICLE CANVAS ---------- */
+  #particles{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+  }
+
+  /* ---------- SHIMMER TEXT ---------- */
+  .shimmer{
+    background:linear-gradient(100deg, var(--burgundy) 30%, var(--gold) 45%, #F3DD8C 52%, var(--gold) 58%, var(--burgundy) 72%);
+    background-size:250% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+    animation:shimmerMove 5s linear infinite;
+  }
+  @keyframes shimmerMove{
+    0%{background-position:0% 50%;}
+    100%{background-position:250% 50%;}
+  }
+  .birthday-reveal h1.shimmer{
+    background:linear-gradient(100deg, var(--cream) 30%, var(--gold) 45%, #FFF3C4 52%, var(--gold) 58%, var(--cream) 72%);
+    background-size:250% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  /* ---------- CURTAIN REVEAL ---------- */
+  .curtain{
+    position:fixed;
+    inset:0;
+    z-index:60;
+    display:flex;
+    pointer-events:none;
+  }
+  .curtain-panel{
+    flex:1;
+    background:linear-gradient(135deg, var(--burgundy-deep), var(--burgundy) 60%, var(--burgundy-soft));
+    transition:transform 1.1s cubic-bezier(.76,0,.24,1);
+  }
+  .curtain-panel.left{transform:translateX(0);}
+  .curtain-panel.right{transform:translateX(0);}
+  .curtain.open .curtain-panel.left{transform:translateX(-100%);}
+  .curtain.open .curtain-panel.right{transform:translateX(100%);}
+  .curtain.gone{display:none;}
+  .light-burst{
+    position:fixed;
+    top:50%;left:50%;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:radial-gradient(circle, #fff6da 0%, var(--gold) 35%, transparent 70%);
+    transform:translate(-50%,-50%) scale(0);
+    z-index:61;
+    pointer-events:none;
+    opacity:0;
+  }
+  .light-burst.burst{
+    animation:lightBurst 1s cubic-bezier(.2,.9,.3,1) forwards;
+  }
+  @keyframes lightBurst{
+    0%{transform:translate(-50%,-50%) scale(0);opacity:1;}
+    60%{opacity:.9;}
+    100%{transform:translate(-50%,-50%) scale(70);opacity:0;}
+  }
+
+  /* ---------- COUNTER ---------- */
+  #counter{
+    text-align:center;
+    background:linear-gradient(180deg, var(--cream-deep), var(--cream));
+  }
+  .counter-number{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:clamp(3.5rem,12vw,7rem);
+    line-height:1;
+  }
+  .counter-label{
+    margin-top:.6rem;
+    font-size:1rem;
+    letter-spacing:.04em;
+    color:#6b4a50;
+    font-weight:300;
+  }
+
+  /* ---------- MAGNETIC BUTTON ---------- */
+  .magnetic{
+    transition:transform .25s cubic-bezier(.2,.9,.3,1);
+    will-change:transform;
+  }
+
+  /* ---------- TONEARM ---------- */
+  .vinyl-card{position:relative;}
+  .tonearm{
+    position:absolute;
+    top:-14px;
+    right:6px;
+    width:62px;
+    height:62px;
+    pointer-events:none;
+    z-index:2;
+  }
+  .tonearm::before{
+    content:'';
+    position:absolute;
+    top:4px;right:4px;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 3px var(--burgundy-deep);
+  }
+  .tonearm::after{
+    content:'';
+    position:absolute;
+    top:9px;right:7px;
+    width:3px;
+    height:46px;
+    background:linear-gradient(var(--gold), var(--burgundy-soft));
+    border-radius:2px;
+    transform-origin:top center;
+    transform:rotate(-32deg);
+    transition:transform .5s cubic-bezier(.4,.2,.2,1);
+  }
+  .vinyl-card:hover .tonearm::after{transform:rotate(-2deg);}
+
+  /* ---------- GIFT CARDS ---------- */
+  .gift-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:clamp(1.5rem,4vw,3rem);
+    margin-top:1rem;
+  }
+  .gift-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1rem;
+    width:160px;
+    padding:2rem 1rem;
+    background:var(--cream-deep);
+    border:1.5px solid var(--gold);
+    border-radius:14px;
+    cursor:pointer;
+    font-family:'Jost',sans-serif;
+    transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+    box-shadow:0 20px 35px -18px rgba(54,10,22,.3);
+  }
+  .gift-card:hover{
+    transform:translateY(-8px);
+    background:var(--cream);
+    box-shadow:0 28px 45px -15px rgba(54,10,22,.4);
+  }
+  .gift-icon{
+    width:56px;
+    height:56px;
+    color:var(--burgundy);
+    animation:iconFloat 3s ease-in-out infinite;
+  }
+  .gift-card:nth-child(2) .gift-icon{animation-delay:.3s;}
+  .gift-card:nth-child(3) .gift-icon{animation-delay:.6s;}
+  @keyframes iconFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+  }
+  .gift-label{
+    font-size:.95rem;
+    letter-spacing:.03em;
+    color:var(--burgundy);
+    font-weight:500;
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:80;
+    background:rgba(54,10,22,.78);
+    backdrop-filter:blur(6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:1.5rem;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .4s ease, visibility .4s ease;
+  }
+  .modal-overlay.open{opacity:1;visibility:visible;}
+  .modal-box{
+    background:var(--cream);
+    width:100%;
+    max-width:620px;
+    max-height:85vh;
+    overflow-y:auto;
+    border-radius:12px;
+    padding:clamp(1.8rem,4vw,3rem);
+    position:relative;
+    transform:scale(.82);
+    transition:transform .45s cubic-bezier(.26,1.3,.4,1);
+    box-shadow:0 50px 90px -20px rgba(0,0,0,.5);
+  }
+  .modal-overlay.open .modal-box{transform:scale(1);}
+  .modal-close{
+    position:absolute;
+    top:1rem;right:1rem;
+    width:36px;height:36px;
+    border-radius:50%;
+    background:var(--burgundy);
+    color:var(--cream);
+    border:none;
+    font-size:1rem;
+    cursor:pointer;
+    z-index:2;
+    transition:transform .25s ease;
+  }
+  .modal-close:hover{transform:rotate(90deg) scale(1.1);}
+  .modal-title{
+    font-size:clamp(1.5rem,4vw,2.1rem);
+    color:var(--burgundy);
+    text-align:center;
+    margin-bottom:.8rem;
+  }
+  .modal-message{
+    color:#5a3a40;
+    font-weight:300;
+    text-align:center;
+    margin-bottom:1.6rem;
+    font-size:.98rem;
+  }
+  .modal-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:1.1rem;
+    margin-bottom:2rem;
+  }
+  .modal-gallery .polaroid{padding:.5rem .5rem .9rem;}
+  .lightbox-box{
+    background:transparent;
+    box-shadow:none;
+    padding:0;
+    max-width:min(90vw,700px);
+  }
+  .lightbox-box #lightboxImg{
+    width:100%;
+    max-height:80vh;
+    object-fit:contain;
+    display:block;
+    border-radius:8px;
+    box-shadow:0 40px 80px -15px rgba(0,0,0,.6);
+  }
+  .lightbox-box .modal-close{top:-44px;right:0;}
+  .modal-vinyl{margin:0 auto;}
+
+  /* ---------- CAKE ---------- */
+  .bunting{
+    display:flex;
+    justify-content:center;
+    gap:.5rem;
+    margin-bottom:1.5rem;
+  }
+  .bunting span{
+    width:0;height:0;
+    border-left:11px solid transparent;
+    border-right:11px solid transparent;
+    border-top:16px solid var(--c, var(--burgundy));
+    animation:buntingSway 2.4s ease-in-out infinite;
+  }
+  .bunting span:nth-child(odd){animation-delay:.2s;}
+  @keyframes buntingSway{
+    0%,100%{transform:rotate(-4deg);}
+    50%{transform:rotate(4deg);}
+  }
+  .cake{
+    position:relative;
+    width:220px;
+    height:190px;
+    margin:0 auto 1.6rem;
+  }
+  .tier{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:10px 10px 4px 4px;
+    box-shadow:0 10px 20px -8px rgba(54,10,22,.35);
+  }
+  .tier::before{
+    content:'';
+    position:absolute;
+    top:-8px;left:0;right:0;
+    height:16px;
+    background:inherit;
+    border-radius:50%/16px;
+  }
+  .tier-bottom{
+    width:200px;height:70px;bottom:0;
+    background:var(--cream-deep);
+    border:2px solid var(--gold);
+  }
+  .tier-mid{
+    width:150px;height:55px;bottom:62px;
+    background:var(--rose);
+    border:2px solid var(--gold);
+  }
+  .tier-top{
+    width:100px;height:45px;bottom:109px;
+    background:var(--burgundy);
+    border:2px solid var(--gold);
+  }
+  .candle{
+    position:absolute;
+    left:50%;
+    bottom:152px;
+    transform:translateX(-50%);
+    width:6px;height:26px;
+    background:repeating-linear-gradient(var(--gold), var(--gold) 4px, var(--cream) 4px, var(--cream) 8px);
+    border-radius:2px;
+    z-index:2;
+  }
+  .candle-side{bottom:142px;}
+  .candle-side.left{left:38%;}
+  .candle-side.right{left:62%;}
+  .flame{
+    position:absolute;
+    top:-14px;left:50%;
+    transform:translateX(-50%);
+    width:8px;height:14px;
+    background:radial-gradient(circle, #FFE9A8 0%, #F3A93B 55%, var(--burgundy-soft) 100%);
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation:flicker 1.1s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{transform:translateX(-50%) scale(1) rotate(-2deg);}
+    50%{transform:translateX(-50%) scale(1.15) rotate(3deg);}
+  }
+
+  /* ---------- FLOWER ---------- */
+  .modal-box-flower{max-width:560px;}
+  .flower-stage{
+    position:relative;
+    min-height:420px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .big-flower{
+    position:relative;
+    width:180px;
+    height:180px;
+    animation:flowerSway 5s ease-in-out infinite;
+    z-index:2;
+  }
+  @keyframes flowerSway{
+    0%,100%{transform:rotate(-3deg);}
+    50%{transform:rotate(3deg);}
+  }
+  .petal{
+    position:absolute;
+    width:76px;height:76px;
+    border-radius:50%;
+    background:var(--rose);
+    opacity:.92;
+  }
+  .p1{top:0;left:52px;background:var(--burgundy-soft);}
+  .p2{top:38px;left:0;background:var(--rose);}
+  .p3{top:38px;left:104px;background:var(--rose);}
+  .p4{top:84px;left:18px;background:var(--burgundy);}
+  .p5{top:84px;left:86px;background:var(--burgundy);}
+  .flower-center{
+    position:absolute;
+    top:62px;left:52px;
+    width:76px;height:76px;
+    border-radius:50%;
+    background:var(--gold);
+    z-index:2;
+    box-shadow:inset 0 0 0 4px var(--cream);
+  }
+  .love-word{
+    position:absolute;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    color:var(--burgundy);
+    font-size:clamp(.85rem,2vw,1.05rem);
+    white-space:nowrap;
+    animation:wordFloat 4s ease-in-out infinite;
+    opacity:.9;
+  }
+  .w1{top:4%;left:6%;animation-delay:0s;}
+  .w2{top:14%;right:4%;animation-delay:.4s;}
+  .w3{top:42%;left:-2%;animation-delay:.8s;}
+  .w4{top:46%;right:-4%;animation-delay:1.2s;}
+  .w5{bottom:20%;left:2%;animation-delay:1.6s;}
+  .w6{bottom:16%;right:0;animation-delay:2s;}
+  .w7{bottom:2%;left:22%;animation-delay:2.4s;}
+  .w8{bottom:2%;right:18%;animation-delay:2.8s;}
+  @keyframes wordFloat{
+    0%,100%{transform:translateY(0);opacity:.75;}
+    50%{transform:translateY(-10px);opacity:1;}
+  }
+  @media (max-width:520px){
+    .love-word{font-size:.78rem;}
+    .flower-stage{min-height:360px;}
+  }
+
+  /* ---------- BIG GALLERY (photos + videos, self-healing grid) ----------
+     Each tile is flex:1 1 180px — browser decides how many fit per row,
+     and remaining tiles stretch to fill the row evenly. Delete any tile
+     and the rest simply redistribute; nothing breaks or leaves a gap. */
+  .media-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.9rem;
+    margin-top:1rem;
+  }
+  .media-item{
+    position:relative;
+    flex:1 1 180px;
+    aspect-ratio:1/1;
+    background:var(--cream);
+    border:1px dashed var(--rose);
+    border-radius:4px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:1;
+    transition:box-shadow .4s ease;
+  }
+  .media-item.in-view{animation:mediaPop .7s ease;}
+  @keyframes mediaPop{
+    0%{opacity:0;transform:translateY(20px) scale(.93);}
+    100%{opacity:1;transform:translateY(0) scale(1);}
+  }
+  .media-item:hover{box-shadow:0 22px 42px -14px rgba(54,10,22,.45);}
+  .media-item img,
+  .media-item video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    color:#8a5b63;
+    font-size:.78rem;
+    text-align:center;
+    padding:.7rem;
+    transition:transform .6s cubic-bezier(.2,.8,.3,1);
+  }
+  .media-item:hover img,
+  .media-item:hover video{transform:scale(1.1) rotate(-0.5deg);}
+  .media-item.has-img{cursor:zoom-in;}
+  .zoom-hint{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.5rem;
+    color:var(--cream);
+    background:rgba(54,10,22,0);
+    opacity:0;
+    transition:opacity .3s ease, background .3s ease;
+    pointer-events:none;
+  }
+  .media-item:hover .zoom-hint{opacity:1;background:rgba(54,10,22,.3);}
+  .media-item .media-label{
+    position:absolute;
+    inset:auto 0 0 0;
+    background:linear-gradient(transparent, rgba(54,10,22,.65));
+    color:var(--cream);
+    font-size:.72rem;
+    padding:1.2rem .5rem .4rem;
+    text-align:center;
+    pointer-events:none;
+  }
+  .media-item .play-badge{
+    position:absolute;
+    top:.5rem;right:.5rem;
+    background:rgba(54,10,22,.7);
+    color:var(--cream);
+    font-size:.7rem;
+    padding:.2rem .5rem;
+    border-radius:999px;
+    pointer-events:none;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+  }
+
+  @media (max-width:640px){
+    section{padding:4.5rem 1.2rem;}
+    .vinyl{width:130px;height:130px;}
+    .vinyl-card{width:140px;}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="curtain gone" id="curtain">
+  <div class="curtain-panel left"></div>
+  <div class="curtain-panel right"></div>
+</div>
+<div class="light-burst" id="lightBurst"></div>
+
+<!-- ============ OPENER ============ -->
+<div id="opener">
+  <div class="opener-vinyl"></div>
+  <div class="countdown-number" id="countdownNum">3</div>
+  <div class="birthday-reveal" id="birthdayReveal">
+    <h1 class="glow-pulse shimmer">Happy Birthday,<br> <em>Tilla </em></h1>
+    <p>someone made you something...</p>
+    <div class="envelope-wrap" id="envelopeWrap">
+      <div class="envelope">
+        <div class="envelope-body"></div>
+        <div class="envelope-letter"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-heart">♥</div>
+      </div>
+      <p class="envelope-caption" id="envelopeCaption">tap the envelope to open it</p>
+    </div>
+  </div>
+</div>
+
+<!-- Music toggle: add your own mp3 as src below to play background music -->
+<audio id="bgMusic" loop>
+  <source src="./audio/WhatsApp Audio 2026-10-05 at 00.11.25.mpeg" type="audio/mpeg">
+</audio>
+<button class="music-toggle" id="musicToggle" aria-label="Toggle music">
+  <span class="music-disc">♪</span>
+</button>
+
+<!-- ============ MAIN SITE ============ -->
+<div id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-eyebrow">a little something from Zainab</p>
+    <h1>For the <em class="shimmer">one</em><br>who has my heart</h1>
+    <p class="tagline">Happy Birthday to the person who makes every ordinary day feel like something worth celebrating.</p>
+    <p class="names-pill">Tales  Of Us</p>
+    <div class="scroll-cue">scroll</div>
+  </section>
+
+ 
+
+  <!-- LETTER -->
+  <section id="letter" class="reveal">
+    <div class="section-head">
+      <h2>A letter for you</h2>
+      <p>Everything I don't always say out loud.</p>
+    </div>
+    <div class="letter-layout">
+      <div class="letter-card">
+        <span class="letter-mark">“</span>
+        <p>My <span class="editable">Tilla</span>,</p>
+        <p> 
+
+Happy birthday to my loml and my best friend. words can’t even begin to describe how much i love you. You are such a good man and an incredible person. I fall in love with you more and more everyday and i can’t wait to see what the future has in store for us 
+because i know it’ll be amazing. you’re literally my home and i can’t imagine myself being anywhere else. 
+
+you are the kindest,thoughtful, most caring person i know and i’m so incredibly blessed that God has placed you in my life and i will forever be internally grateful for it. I know you don’t particularly celebrate your birthday but i want you to know how much i love you and i hope and pray you get everything you desire in life because you deserve everything and more. i love you so so much baby and i can’t wait to spend the rest of my life with you❤️</p>
+   
+        <p class="letter-signoff">forever your <span class="editable">baby</span> 🤍</p>
+      </div>
+      <div class="letter-photos">
+        <!-- <p class="cluster-hint">(1–3 photos — delete any &lt;figure&gt; block below and the rest auto-resize to fill the space)</p> -->
+        <div class="memory-cluster">
+          <figure class="polaroid">
+            <div class="frame">
+              <!-- Add here: a sweet photo of the two of you -->
+              <img src="./image/WhatsApp Image 2026-10-04 at 16.12.54.jpeg" alt="">
+            </div>
+            <figcaption>my favorite person</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <div class="frame">
+              <!-- Add here: a photo of just him, looking happy -->
+              <img src="./image/WhatsApp Image 2026-10-04 at 16.15.44.jpeg" alt="">
+            </div>
+            <figcaption>that face i adore</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <div class="frame">
+              <!-- Add here: one more favorite photo of you two -->
+              <img src="./image/WhatsApp Image 2026-10-04 at 16.16.12.jpeg" alt="Add here: one more favorite photo of you two">
+            </div>
+            <figcaption>memory of us</figcaption>
+          </figure>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFTS -->
+  <section id="gifts" class="reveal">
+    <div class="section-head">
+      <h2>A gift for you</h2>
+      <p>Tap each one to open it.</p>
+    </div>
+    <div class="gift-row">
+      <button class="gift-card magnetic" data-modal="cameraModal">
+        <span class="gift-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="18" width="52" height="36" rx="6"/>
+            <path d="M22 18l4-8h12l4 8"/>
+            <circle cx="32" cy="36" r="10"/>
+            <circle cx="48" cy="26" r="1.5" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="gift-label">memories</span>
+      </button>
+      <button class="gift-card magnetic" data-modal="cakeModal">
+        <span class="gift-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="34" width="44" height="22" rx="4"/>
+            <path d="M10 36c8-6 36-6 44 0"/>
+            <line x1="32" y1="24" x2="32" y2="16"/>
+            <path d="M32 9c-2.2 2-2.2 4.4 0 7c2.2-2.6 2.2-5 0-7z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="gift-label">your cake</span>
+      </button>
+      <button class="gift-card magnetic" data-modal="flowerModal">
+        <span class="gift-icon">
+          <svg viewBox="0 0 64 64" fill="currentColor">
+            <circle cx="32" cy="20" r="9"/>
+            <circle cx="18" cy="32" r="9"/>
+            <circle cx="46" cy="32" r="9"/>
+            <circle cx="23" cy="47" r="9"/>
+            <circle cx="41" cy="47" r="9"/>
+            <circle cx="32" cy="34" r="7" fill="var(--gold)"/>
+          </svg>
+        </span>
+        <span class="gift-label">just because</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- GIFT MODALS -->
+  <div class="modal-overlay" id="cameraModal">
+    <div class="modal-box">
+      <button class="modal-close" data-close>✕</button>
+      <h3 class="modal-title">A few of my favorite moments</h3>
+      <p class="modal-message">Every one of these is a reason I fell for you a little more.</p>
+      <div class="modal-gallery">
+        <figure class="polaroid">
+          <div class="frame media-item has-img"><img src="./image/WhatsApp Image 2026-10-04 at 16.18.21.jpeg" alt=""><span class="zoom-hint">🔍</span></div>
+        </figure>
+        <figure class="polaroid">
+          <div class="frame media-item has-img"><img src="./image/WhatsApp Image 2026-10-04 at 16.07.35.jpeg" alt=""><span class="zoom-hint">🔍</span></div>
+        </figure>
+        <figure class="polaroid">
+          <div class="frame media-item has-img"><img src="./image/WhatsApp Image 2026-10-04 at 16.05.58.jpeg" alt=""><span class="zoom-hint">🔍</span></div>
+        </figure>
+        <figure class="polaroid">
+          <div class="frame media-item has-img"><img src="./image/WhatsApp Image 2026-10-04 at 16.04.15.jpeg" alt=""><span class="zoom-hint">🔍</span></div>
+        </figure>
+        <figure class="polaroid">
+          <div class="frame media-item has-img"><img src="./image/WhatsApp Image 2026-10-04 at 16.07.35 (1).jpeg" alt=""><span class="zoom-hint">🔍</span></div>
+        </figure>
+        <figure class="polaroid">
+          <div class="frame media-item has-img"><img src="image/WhatsApp Image 2026-10-04 at 16.21.43.jpeg" alt=""><span class="zoom-hint">🔍</span></div>
+        </figure>
+      </div>
+      <div class="modal-vinyl vinyl-card magnetic" data-link="https://open.spotify.com/track/3f0wlG15mXf22WOraAYwJ7?si=uLp3c6rMSm6byJFRM6cAzg&utm_source=copy-link">
+        <div class="tonearm"></div>
+        <div class="vinyl"></div>
+        <div class="vinyl-title"> mf groove</div>
+        <div class="vinyl-artist">Smino — tap to play</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="cakeModal">
+    <div class="modal-box modal-box-cake">
+      <button class="modal-close" data-close>✕</button>
+      <h3 class="modal-title shimmer">Happy Birthday!</h3>
+      <div class="bunting">
+        <span style="--c:var(--burgundy)"></span><span style="--c:var(--gold)"></span><span style="--c:var(--rose)"></span><span style="--c:var(--burgundy)"></span><span style="--c:var(--gold)"></span><span style="--c:var(--rose)"></span><span style="--c:var(--burgundy)"></span>
+      </div>
+      <div class="cake">
+        <div class="candle">
+          <div class="flame"></div>
+        </div>
+        <div class="candle candle-side left">
+          <div class="flame"></div>
+        </div>
+        <div class="candle candle-side right">
+          <div class="flame"></div>
+        </div>
+        <div class="tier tier-top"></div>
+        <div class="tier tier-mid"></div>
+        <div class="tier tier-bottom"></div>
+      </div>
+      <p class="modal-message" style="text-align:center;">Make a wish, my love. 🎂</p>
+      <div class="modal-vinyl vinyl-card magnetic" data-link="https://open.spotify.com/track/6B0QH8nsJ0Y4sYqHw74PF5?si=jhr3jTa5QUqsCJVZLHj6rg&utm_source=copy-link">
+        <div class="tonearm"></div>
+        <div class="vinyl"></div>
+        <div class="vinyl-title">2ofUs</div>
+        <div class="vinyl-artist">Chase Shakur — tap to play</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="flowerModal">
+    <div class="modal-box modal-box-flower">
+      <button class="modal-close" data-close>✕</button>
+      <div class="flower-stage">
+        <div class="big-flower">
+          <span class="petal p1"></span>
+          <span class="petal p2"></span>
+          <span class="petal p3"></span>
+          <span class="petal p4"></span>
+          <span class="petal p5"></span>
+          <span class="flower-center"></span>
+        </div>
+        <span class="love-word w1">I love you</span>
+        <span class="love-word w2">my favorite person</span>
+        <span class="love-word w3">forever yours</span>
+        <span class="love-word w4">my whole heart</span>
+        <span class="love-word w5">I adore you</span>
+        <span class="love-word w6">you + me, always</span>
+        <span class="love-word w7">home is you</span>
+        <span class="love-word w8">I choose you</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUR GALLERY (photos + videos) -->
+  <section id="ourgallery" class="reveal">
+    <div class="section-head">
+      <h2>Us, in pictures &amp; videos</h2>
+    
+    </div>
+    <div class="media-grid">
+      <div class="media-item has-img">
+        <!-- Add here: any photo of you two -->
+        <img src="./image/WhatsApp Image 2026-10-04 at 16.05.58.jpeg" alt="">
+        <span class="zoom-hint">🔍</span>
+      </div>
+      <div class="media-item">
+        <!-- Add here: a short video clip, e.g. you two laughing or dancing -->
+        <video controls playsinline>
+          <source src="./video/WhatsApp Video 2026-10-04 at 16.24.16.mp4" type="video/mp4">
+        </video>
+        <!-- <span class="media-label">🎥 add a short video clip here</span> -->
+      </div>
+      <div class="media-item has-img">
+        <!-- Add here: a photo from a trip or night out -->
+        <img src="./image/WhatsApp Image 2026-10-04 at 16.07.35.jpeg" alt="">
+        <span class="zoom-hint">🔍</span>
+      </div>
+      <div class="media-item has-img">
+        <!-- Add here: a close-up photo of him -->
+        <img src="./image/WhatsApp Image 2026-10-04 at 16.15.44.jpeg" alt="">
+        <span class="zoom-hint">🔍</span>
+      </div>
+      <div class="media-item">
+        <!-- Add here: a video of a birthday message, or any cute clip -->
+        <video controls playsinline>
+          <source src="./video/WhatsApp Video 2026-10-09 at 13.09.38.mp4" type="video/mp4">
+        </video>
+        <!-- <span class="media-label">🎥 add a video message or clip here</span> -->
+      </div>
+      <div class="media-item has-img">
+        <!-- Add here: a candid, unposed photo -->
+        <img src="./image/WhatsApp Image 2026-10-04 at 16.07.35 (1).jpeg" alt="">
+        <span class="zoom-hint">🔍</span>
+      </div>
+      <div class="media-item has-img">
+        <!-- Add here: a photo of a shared hobby or activity -->
+        <img src="./image/WhatsApp Image 2026-10-04 at 16.15.50.jpeg" alt="">
+        <span class="zoom-hint">🔍</span>
+      </div>
+      <div class="media-item has-img">
+        <!-- Add here: a throwback photo from early on -->
+        <img src="./image/WhatsApp Image 2026-10-04 at 16.16.12.jpeg" alt="">
+        <span class="zoom-hint">🔍</span>
+      </div>
+      <div class="media-item">
+        <!-- Add here: a video from a date, concert, or trip -->
+        <video controls playsinline>
+          <source src="./video/WhatsApp Video 2026-10-04 at 16.24.16.mp4" type="video/mp4">
+        </video>
+        <!-- <span class="media-label">🎥 add another video clip here</span> -->
+      </div>
+      <div class="media-item has-img">
+        <!-- Add here: your favorite recent photo together -->
+        <img src="./image/WhatsApp Image 2026-10-04 at 16.18.21.jpeg" alt="Add here: your favorite recent photo together">
+        <span class="zoom-hint">🔍</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- OUR STORY -->
+  <section id="story" class="reveal">
+    <div class="section-head">
+      <h2>Our story so far</h2>
+      <p>A few chapters worth remembering.</p>
+    </div>
+    <div class="timeline">
+      <div class="story-item">
+        <div class="story-photo">
+          <!-- Add here: a photo from the day/night you met or first talked -->
+          <img src="./image/WhatsApp Image 2026-10-04 at 16.07.35 (1).jpeg" alt="">
+        </div>
+        <div class="story-dot"></div>
+        <div class="story-text">
+          <!-- <span class="story-date">[Month, Year]</span> -->
+          <!-- <h3>How it started</h3> -->
+          <p> I believe we’ve come such a long way these past 8 months and shared so many intimate and beautiful moments with each other. That’s why this birthday with you means so much to me because it’s a day to celebrate you and you deserve to be celebrated. I know you told me not to do anything for your birthday but there was just absolutely no way that was gonna happen, especially when you mean soo much to me. You’re literally the best thing that has ever happened to me and i truly hope i was able to give you everything you wanted. All i want for you is to be happy and i will do every thing in power to make sure of that. you have my heart baby, always and forever. </p>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-photo">
+          <!-- Add here: a photo from your first date or first trip together -->
+          <img src="./image/WhatsApp Image 2026-10-04 at 16.07.36.jpeg" alt="">
+        </div>
+        <div class="story-dot"></div>
+        <div class="story-text">
+          <!-- <span class="story-date">[Month, Year]</span> -->
+       
+          <p>I knew the connection we shared was different from the very first time we spoke on the phone. It felt like i had known you my whole life and it was so easy and comfortable to talk to you. We spoke on the phone all night and i remember not wanting to hang up. There are so many intimate moments we’ve shared that i value so much, from the night i came to your work to surprise you to the night you came to see me after your football game. That very first night i thought this is it for me, i’ve found my person. I’m exactly where i want/need to be. my heart was skipping beats and i feel even more love for you with each passing day.</p>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-photo">
+          <!-- Add here: a photo from a hard time you got through together, or a cozy everyday moment -->
+          <img src="./image/WhatsApp Image 2026-10-04 at 16.18.21.jpeg" alt="">
+        </div>
+        <div class="story-dot"></div>
+        <div class="story-text">
+          <!-- <span class="story-date">[Month, Year]</span> -->
+          <!-- <h3>What we got through</h3> -->
+          <p>I just really wanna thank you for being the best man, the best boyfriend, the best best friend i could ever ask for. Thank you for always being there for me, sticking up from me and thinking about me in every decision you make, whether  it’s the ones i see and the ones you make behind the scenes. You’ve really should me what true love is and what loving someone truly means. You’re the man of my dreams and i’m so lucky and blessed that god has given me the privilege of having you in my life. You’re a really really great man and i need you to know that. I love and appreciate you so much and just know, no matter what life throws at us i will always and forever choose you. I promise❤️</p>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-photo">
+          <!-- Add here: your most recent favorite photo together -->
+          <img src="./image/WhatsApp Image 2026-10-04 at 16.04.15.jpeg" alt="">
+        </div>
+        <div class="story-dot"></div>
+        <div class="story-text">
+          <!-- <span class="story-date">today</span> -->
+          <!-- <h3>Right now</h3> -->
+          <p>You are such a beautiful soul, and there's something about you that makes you truly special. Your smile, your presence, and the little things that make you who you are make you someone worth appreciating. You deserve genuine love, endless happiness, and all the beautiful things life has to offer. Never forget how amazing you are and how much you mean to the people lucky enough to have you in their lives. ❤️</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOVE QUIZ -->
+  <!-- <section id="lovequiz" class="reveal"> -->
+    <!-- <div class="quiz-card">
+      <h3>do you know how much I love you? 🤭</h3>
+      <div class="quiz-buttons">
+        <button class="quiz-btn magnetic" id="quizYes">yes, a lot</button>
+        <button class="quiz-btn magnetic" id="quizNo">not really</button>
+      </div>
+      <p class="quiz-result" id="quizResult"></p>
+    </div>
+  </section> -->
+
+  <!-- CLOSER -->
+  <section id="closer" class="reveal">
+    <h2>Happy Birthday, my love.</h2>
+    <p>Here's to loving you louder, closer, and better — every single year.</p>
+    <div class="heart-divider">♥ ♥ ♥</div>
+  </section>
+
+  <!-- LIGHTBOX (enlarges any tapped photo) -->
+  <div class="modal-overlay" id="lightbox">
+    <div class="modal-box lightbox-box">
+      <button class="modal-close" data-close>✕</button>
+      <img id="lightboxImg" src="" alt="">
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ---------- COUNTDOWN ----------
+  const countdownNum = document.getElementById('countdownNum');
+  const birthdayReveal = document.getElementById('birthdayReveal');
+  const envelopeWrap = document.getElementById('envelopeWrap');
+  const envelopeCaption = document.getElementById('envelopeCaption');
+  const opener = document.getElementById('opener');
+  const mainSite = document.getElementById('main');
+
+  const sequence = ['3','2','1'];
+  let step = 0;
+
+  function runCountdown(){
+    if(step < sequence.length){
+      countdownNum.textContent = sequence[step];
+      countdownNum.classList.remove('show');
+      void countdownNum.offsetWidth; // restart animation
+      countdownNum.classList.add('show');
+      step++;
+      setTimeout(runCountdown, 850);
+    } else {
+      countdownNum.classList.remove('show');
+      birthdayReveal.classList.add('show');
+      burstConfetti(70);
+      setTimeout(() => envelopeWrap.classList.add('show'), 500);
+    }
+  }
+  setTimeout(runCountdown, 500);
+
+  envelopeWrap.addEventListener('click', () => {
+    if(envelopeWrap.classList.contains('open')) return;
+    envelopeWrap.classList.add('open');
+    envelopeCaption.textContent = 'tap again to step inside';
+    burstConfetti(50);
+    envelopeWrap.addEventListener('click', enterSite, { once:true });
+  });
+
+  function enterSite(){
+    const curtain = document.getElementById('curtain');
+    const lightBurst = document.getElementById('lightBurst');
+    curtain.classList.remove('gone');
+    mainSite.classList.add('show');
+    document.body.style.overflow = 'auto';
+
+    requestAnimationFrame(() => {
+      lightBurst.classList.add('burst');
+      curtain.classList.add('open');
+      opener.classList.add('hide');
+      burstConfetti(90);
+    });
+
+    setTimeout(() => {
+      curtain.classList.add('gone');
+      lightBurst.classList.remove('burst');
+    }, 1300);
+  }
+
+  document.body.style.overflow = 'hidden';
+
+  // ---------- CONFETTI ----------
+  const confettiColors = ['#C9A227','#8C2E45','#B5566E','#FBF4E7','#5C1225'];
+  function burstConfetti(count){
+    for(let i=0;i<count;i++){
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random()*100 + 'vw';
+      piece.style.background = confettiColors[Math.floor(Math.random()*confettiColors.length)];
+      piece.style.animationDuration = (2.2 + Math.random()*1.8) + 's';
+      piece.style.animationDelay = (Math.random()*0.4) + 's';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      opener.appendChild(piece);
+      setTimeout(() => piece.remove(), 4500);
+    }
+  }
+
+  // ---------- FLOATING HEARTS ----------
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function spawnHeart(){
+    if(!mainSite.classList.contains('show')) return;
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.textContent = '♥';
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.setProperty('--drift', (Math.random()*80 - 40) + 'px');
+    heart.style.animationDuration = (7 + Math.random()*5) + 's';
+    heart.style.fontSize = (1 + Math.random()*1.2) + 'rem';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 13000);
+  }
+  if(!reduceMotion){
+    setInterval(spawnHeart, 1400);
+  }
+
+  // ---------- SCROLL REVEAL ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ---------- STORY TIMELINE REVEAL (staggered) ----------
+  const storyItems = document.querySelectorAll('.story-item');
+  const storyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.25 });
+  storyItems.forEach(el => storyObserver.observe(el));
+
+  // ---------- MEDIA GALLERY: staggered reveal + lightbox ----------
+  document.querySelectorAll('.media-grid').forEach(grid => {
+    grid.querySelectorAll('.media-item').forEach((item, i) => {
+      item.style.animationDelay = (i * 80) + 'ms';
+    });
+  });
+  const mediaObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.media-item').forEach(item => mediaObserver.observe(item));
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.media-item.has-img img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // ---------- GIFT MODALS ----------
+  document.querySelectorAll('.gift-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const modal = document.getElementById(card.dataset.modal);
+      if(!modal) return;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if(card.dataset.modal === 'cakeModal'){
+        burstConfetti(45);
+      }
+    });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(modal => {
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow = 'auto';
+    }
+    modal.querySelector('[data-close]').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) closeModal();
+    });
+  });
+
+  // ---------- VINYL -> SPOTIFY ----------
+  document.querySelectorAll('.vinyl-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const link = card.getAttribute('data-link');
+      window.open(link, '_blank');
+    });
+  });
+
+  // ---------- MUSIC TOGGLE ----------
+  const musicToggle = document.getElementById('musicToggle');
+  const bgMusic = document.getElementById('bgMusic');
+  musicToggle.addEventListener('click', () => {
+    if(bgMusic.paused){
+      bgMusic.play().catch(() => {});
+      musicToggle.classList.add('playing');
+    } else {
+      bgMusic.pause();
+      musicToggle.classList.remove('playing');
+    }
+  });
+
+  // ---------- RUNAWAY "NOT REALLY" BUTTON ----------
+  const quizYes = document.getElementById('quizYes');
+  const quizNo = document.getElementById('quizNo');
+  const quizResult = document.getElementById('quizResult');
+  const quizButtons = document.querySelector('.quiz-buttons');
+
+  function dodge(){
+    const containerRect = quizButtons.getBoundingClientRect();
+    const maxX = containerRect.width - quizNo.offsetWidth;
+    const maxY = 40;
+    const newX = Math.random() * maxX - maxX/2;
+    const newY = Math.random() * maxY - maxY/2;
+    quizNo.style.position = 'relative';
+    quizNo.style.transform = `translate(${newX}px, ${newY}px)`;
+  }
+  if(window.matchMedia('(hover: hover)').matches){
+    quizNo.addEventListener('mouseenter', dodge);
+  }
+  quizNo.addEventListener('click', (e) => {
+    e.preventDefault();
+    dodge();
+    quizResult.textContent = "nope, you can't click that one 😌";
+  });
+  quizNo.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    dodge();
+    quizResult.textContent = "nice try 🤭 keep scrolling";
+  });
+  quizYes.addEventListener('click', () => {
+    quizResult.textContent = "good answer. happy birthday, my love. ♥";
+    burstConfetti(50);
+  });
+
+  // ---------- TWINKLING SPARKLES ----------
+  const sparkleSymbols = ['✦','✧','✨'];
+  function spawnSparkle(){
+    if(!mainSite.classList.contains('show')) return;
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.textContent = sparkleSymbols[Math.floor(Math.random()*sparkleSymbols.length)];
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.top = Math.random()*100 + 'vh';
+    s.style.animationDuration = (1.8 + Math.random()*1.4) + 's';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 3400);
+  }
+  if(!reduceMotion){
+    setInterval(spawnSparkle, 600);
+  }
+
+  // ---------- CURSOR HEART TRAIL (desktop) ----------
+  let lastTrail = 0;
+  function spawnTrailHeart(x, y){
+    const now = Date.now();
+    if(now - lastTrail < 90) return;
+    lastTrail = now;
+    const h = document.createElement('div');
+    h.className = 'trail-heart';
+    h.textContent = Math.random() > 0.5 ? '♥' : '✦';
+    h.style.left = x + 'px';
+    h.style.top = y + 'px';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 1200);
+  }
+  if(!reduceMotion && window.matchMedia('(hover: hover)').matches){
+    document.addEventListener('mousemove', (e) => {
+      if(mainSite.classList.contains('show')){
+        spawnTrailHeart(e.clientX, e.clientY);
+      }
+    });
+  }
+
+  // ---------- PARTICLE CANVAS (ambient gold dust) ----------
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  function initParticles(){
+    const count = window.innerWidth < 700 ? 35 : 70;
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.8 + 0.6,
+      speedY: Math.random() * 0.3 + 0.08,
+      drift: Math.random() * 0.4 - 0.2,
+      alpha: Math.random() * 0.5 + 0.15
+    }));
+  }
+  initParticles();
+
+  function drawParticles(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,162,39,${p.alpha})`;
+      ctx.fill();
+      p.y -= p.speedY;
+      p.x += p.drift;
+      if(p.y < -10){ p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      if(p.x < -10) p.x = canvas.width + 10;
+      if(p.x > canvas.width + 10) p.x = -10;
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  if(!reduceMotion){
+    drawParticles();
+  }
+
+  // ---------- DAYS-TOGETHER COUNTER ----------
+  const counterSection = document.getElementById('counter');
+  const dayCountEl = document.getElementById('dayCount');
+  let counterAnimated = false;
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && !counterAnimated){
+        counterAnimated = true;
+        const startDate = new Date(counterSection.dataset.start);
+        const totalDays = Math.max(0, Math.floor((Date.now() - startDate.getTime()) / 86400000));
+        const duration = 1600;
+        const startTime = performance.now();
+        function tick(now){
+          const progress = Math.min(1, (now - startTime) / duration);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          dayCountEl.textContent = Math.floor(eased * totalDays).toLocaleString();
+          if(progress < 1) requestAnimationFrame(tick);
+          else dayCountEl.textContent = totalDays.toLocaleString();
+        }
+        requestAnimationFrame(tick);
+      }
+    });
+  }, { threshold: 0.4 });
+  counterObserver.observe(counterSection);
+
+  // ---------- MAGNETIC BUTTONS ----------
+  if(window.matchMedia('(hover: hover)').matches){
+    document.querySelectorAll('.magnetic').forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+    });
+  }
+
+  // ---------- 3D TILT ON PHOTOS ----------
+  if(!reduceMotion && window.matchMedia('(hover: hover)').matches){
+    document.querySelectorAll('.polaroid, .story-photo').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `rotateX(${y * -10}deg) rotateY(${x * 10}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+
+
+  
+</script>
+
+</body>
+</html>
